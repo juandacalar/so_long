@@ -1,11 +1,36 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+// Constants for window dimensions
+#ifndef WINDOW_WIDTH
+# define WINDOW_WIDTH 800
+#endif
+
+#ifndef WINDOW_HEIGHT
+# define WINDOW_HEIGHT 600
+#endif
+
 # include <mlx.h> // For Minilibs Functions
 # include <stdlib.h> // Malloc, free
 # include <unistd.h> // read, write
 # include <fcntl.h> // Open, close
 # include "libft.h" 
+
+// Key Codes for movement
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+
+// Movement Directions
+# define LEFT 1
+# define RIGHT 2
+# define UP 3
+# define DOWN 4
 
 //struct to represent the game state
 typedef struct s_game
@@ -13,10 +38,23 @@ typedef struct s_game
     int player_x;
     int player_y;
     int collectibles_count;
+     int map_height;
+    int map_width;
+    char **map;
+    // Rendering-specific data
+    void *mlx;          // MLX reference
+    void *win;          // Window reference
+    void *wall_img;     // Texture for walls
+    void *player_img;
+    void *exit_img;
+    void *collectible_img;
+    // ... (Add other textures as needed)
+    int tile_width;     // Width of a tile (based on texture)
+    int tile_height;    // Height of a tile (based on texture)
 }   t_game;
 
 //From read_map.c
-int parse_map(const char *filename);
+int read_map(const char *filename, t_game *game);
 
 // From validate_map.c
 
