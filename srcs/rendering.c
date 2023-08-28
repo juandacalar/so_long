@@ -89,11 +89,15 @@ void draw_map(t_game *game)
     }
 }
 
-
 // The main rendering function
 void render_map(t_game *game) 
 {
+    char *message;
+
     initialize_window(game);
     load_textures(game);
     draw_map(game);
+    message = ft_strjoin("Moves: ", ft_itoa(game->move_count));
+    mlx_string_put(game->mlx, game->win, 10, 10, 0xFFFFFF, message);
+    free(message);
 }

@@ -51,6 +51,8 @@ typedef struct s_game
     // ... (Add other textures as needed)
     int tile_width;     // Width of a tile (based on texture)
     int tile_height;    // Height of a tile (based on texture)
+    // Count player moves
+	int move_count;
 }   t_game;
 
 //From read_map.c
@@ -71,5 +73,8 @@ int has_won(t_game *game);
 
 //Utils 
 int ft_strendswith(const char *str, const char *suffix);
+
+//From input.c or events.c
+int handle_keypress(int keycode, t_game *game);
 
 #endif

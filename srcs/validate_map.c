@@ -30,8 +30,7 @@ int is_rectangular(char **map)
     return (1);
 }
 
-static int validate_characters(char **map, int *player_count,
-                                int *exit_count, int *collectibles_count)
+static int validate_characters(char **map, int *player_count, int *exit_count, int *collectibles_count)
 {
     int i;
     int j;
