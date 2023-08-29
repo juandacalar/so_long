@@ -14,7 +14,7 @@
 # include <stdlib.h> // Malloc, free
 # include <unistd.h> // read, write
 # include <fcntl.h> // Open, close
-# include "libft.h" 
+# include "libft.h"
 
 // Key Codes for movement
 # define KEY_W 119
@@ -57,6 +57,7 @@ typedef struct s_game
 
 //From read_map.c
 int read_map(const char *filename, t_game *game);
+int	count_lines_in_file(int fd);
 
 // From validate_map.c
 
@@ -66,15 +67,22 @@ int is_surrounded_by_walls(char **map);
 
 //From rendering.c
 void    render_map(t_game *game);
+void	load_textures(t_game *game);
+void	draw_map(t_game *game);
 
 //from game_logic.c
 void    move_player(t_game *game, int direction);
 int has_won(t_game *game);
+
 
 //Utils 
 int ft_strendswith(const char *str, const char *suffix);
 
 //From input.c or events.c
 int handle_keypress(int keycode, t_game *game);
+
+//not yet sure about this last one
+void direction_logic(int *new_x, int *new_y, char direction);
+
 
 #endif
